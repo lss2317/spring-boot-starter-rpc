@@ -98,3 +98,20 @@ public class TestController {
 }
 ```
 
+### 配置选择
+
+- [x] serializer
+  - fastjson
+  - jackson
+
+- [x] registryAddress
+  - nacos://127.0.0.1:8848            //nacos注册中心示例
+  - redis://127.0.0.1:6379             //redis注册中心示例
+  - consul://127.0.0.1:8500          //consul注册中心示例
+
+- [x] loadbalancer
+  - random                               随机算法
+  - roundRobin                        轮询
+  - weightRandom                  加权随机
+  - weightRoundRobin           加权轮询
+
