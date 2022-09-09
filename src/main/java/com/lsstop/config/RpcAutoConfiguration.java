@@ -16,6 +16,9 @@ import com.lsstop.serializable.JsonSerializer;
 import com.lsstop.spring.SpringBeanPostProcessor;
 import com.lsstop.transport.netty.client.NettyClient;
 import com.lsstop.transport.netty.server.NettyServer;
+import com.lsstop.utils.ConsulUtil;
+import com.lsstop.utils.NacosUtil;
+import com.lsstop.utils.RedisUtil;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -50,10 +53,19 @@ public class RpcAutoConfiguration implements ApplicationRunner {
         String[] split = configProperties.getRegistryAddress().toLowerCase().split("://");
         RegistryCenter center = null;
         if ("nacos".equals(split[0])) {
+            NacosUtil.setNacos(split[1]);
             center = new NacosRegistry(balance);
         } else if ("consul".equals(split[0])) {
+            String[] strings = split[1].split(":");
+            ConsulUtil.setConsul(strings[0], Integer.parseInt(strings[1]));
             center = new ConsulRegistry(balance);
         } else if ("redis".equals(split[0])) {
+            String[] strings = split[1].split(":");
+            if (configProperties.getPassword() == null) {
+                RedisUtil.setRedis(strings[0], Integer.parseInt(strings[1]));
+            } else {
+                RedisUtil.setRedis(strings[0], Integer.parseInt(strings[1]), configProperties.getPassword());
+            }
             center = new RedisRegistry(balance);
         } else {
             throw new RpcException("注册中心设置错误");

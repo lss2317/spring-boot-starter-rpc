@@ -47,6 +47,11 @@ public class RpcConfigProperties {
     private String loadbalancer = "weightRandom";
 
     /**
+     * redis密码
+     */
+    private String password;
+
+    /**
      * 是否注册服务
      */
     private Boolean registry = true;
@@ -73,6 +78,14 @@ public class RpcConfigProperties {
 
     public void setRegistry(Boolean registry) {
         this.registry = registry;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRegistryAddress() {
