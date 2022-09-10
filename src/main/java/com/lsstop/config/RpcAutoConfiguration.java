@@ -13,6 +13,7 @@ import com.lsstop.registry.RegistryCenter;
 import com.lsstop.serializable.CommonSerializer;
 import com.lsstop.serializable.FastJsonSerializer;
 import com.lsstop.serializable.JsonSerializer;
+import com.lsstop.serializable.KryoSerializer;
 import com.lsstop.spring.SpringBeanPostProcessor;
 import com.lsstop.transport.netty.client.NettyClient;
 import com.lsstop.transport.netty.server.NettyServer;
@@ -75,6 +76,8 @@ public class RpcAutoConfiguration implements ApplicationRunner {
             serializer = new FastJsonSerializer();
         } else if ("jackson".equals(configProperties.getSerializer())) {
             serializer = new JsonSerializer();
+        } else if ("kryo".equals(configProperties.getSerializer())) {
+            serializer = new KryoSerializer();
         } else {
             throw new RpcException("序列化方式设置错误: serializer");
         }

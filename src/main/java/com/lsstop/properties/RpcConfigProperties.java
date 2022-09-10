@@ -39,12 +39,12 @@ public class RpcConfigProperties {
     /**
      * 序列化方式
      */
-    private String serializer = "fastjson";
+    private String serializer = "kryo";
 
     /**
      * 负载均衡算法
      */
-    private String loadbalancer = "weightRandom";
+    private String loadbalancer = "weightRoundRobin";
 
     /**
      * redis密码

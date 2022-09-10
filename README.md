@@ -103,6 +103,7 @@ public class TestController {
 - [x] serializer
   - fastjson
   - jackson
+  - kryo
 
 - [x] registryAddress
   - nacos://127.0.0.1:8848            //nacos注册中心示例
