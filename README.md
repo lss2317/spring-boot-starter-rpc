@@ -2,7 +2,11 @@
 
 ### 使用方式
 
-**下载项目，打包到本地，引入项目**
+**1、先打包`rpc-core`项目**
+
+**项目地址：**[Rpc-Framework](https://github.com/lss2317/rpc-framework)
+
+**2、下载项目，打包到本地，引入项目**
 
 ```xml
 <dependency>
@@ -97,6 +101,19 @@ public class TestController {
     }
 }
 ```
+### 配置参考
+
+```properties
+spring.rpc.registryAddress="nacos://127.0.0.1:8848"  #注册中心地址
+spring.rpc.name="DEMO"                               #注册名称
+spring.rpc.host="127.0.0.1"                          #启动ip
+spring.rpc.port=8080                                 #启动端口
+spring.rpc.weight=1                                  #权重
+spring.rpc.serializer="kryo"                         #序列化方式
+spring.rpc.loadbalancer="roundRobin"                 #负载均衡算法
+spring.rpc.password="123456"                         #redis注册中心时redis密码
+spring.rpc.registry=false                            #是否注册服务(默认为true，注册服务)
+```
 
 ### 配置选择
 
@@ -106,13 +123,13 @@ public class TestController {
   - kryo
 
 - [x] registryAddress
-  - nacos://127.0.0.1:8848            //nacos注册中心示例
-  - redis://127.0.0.1:6379             //redis注册中心示例
-  - consul://127.0.0.1:8500          //consul注册中心示例
+  - nacos://127.0.0.1:8848    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//nacos注册中心示例
+  - redis://127.0.0.1:6379    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//redis注册中心示例(redis如有设置密码还需配置password)
+  - consul://127.0.0.1:8500   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//consul注册中心示例
 
 - [x] loadbalancer
-  - random                               随机算法
-  - roundRobin                        轮询
-  - weightRandom                  加权随机
-  - weightRoundRobin           加权轮询
+  - random &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  随机算法
+  - roundRobin     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   轮询
+  - weightRandom    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加权随机
+  - weightRoundRobin    &nbsp;&nbsp;加权轮询
 

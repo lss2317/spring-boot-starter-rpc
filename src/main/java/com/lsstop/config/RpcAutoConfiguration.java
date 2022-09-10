@@ -85,7 +85,9 @@ public class RpcAutoConfiguration implements ApplicationRunner {
             if (configProperties.getName() == null || configProperties.getName().trim().isEmpty()) {
                 throw new RpcException(RpcErrorEnum.NOT_SETUP_SERVICE);
             }
-            URL url = new URL(configProperties.getName(), configProperties.getHost(), configProperties.getPort(), configProperties.getWeight());
+            //避免权重小于1
+            int weight = configProperties.getWeight() > 0 ? configProperties.getWeight() : 1;
+            URL url = new URL(configProperties.getName(), configProperties.getHost(), configProperties.getPort(), weight);
             center.registered(configProperties.getName(), url);
         }
         return new NettyClient(center, serializer);

@@ -34,7 +34,7 @@ public class RpcConfigProperties {
     /**
      * 权重
      */
-    private Integer weight = 1;
+    private int weight = 1;
 
     /**
      * 序列化方式
@@ -44,7 +44,7 @@ public class RpcConfigProperties {
     /**
      * 负载均衡算法
      */
-    private String loadbalancer = "weightRoundRobin";
+    private String loadbalancer = "roundRobin";
 
     /**
      * redis密码
