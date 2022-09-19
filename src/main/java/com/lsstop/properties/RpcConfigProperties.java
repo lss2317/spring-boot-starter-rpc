@@ -1,13 +1,11 @@
 package com.lsstop.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 /**
  * @author lss
  * @date 2022/09/07
  */
-@Component
 @ConfigurationProperties(prefix = "spring.rpc")
 public class RpcConfigProperties {
 
