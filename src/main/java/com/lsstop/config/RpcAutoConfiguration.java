@@ -18,6 +18,7 @@ import com.lsstop.spring.SpringBeanPostProcessor;
 import com.lsstop.transport.netty.client.NettyClient;
 import com.lsstop.transport.netty.server.NettyServer;
 import com.lsstop.utils.ConsulUtil;
+import com.lsstop.utils.IpUtil;
 import com.lsstop.utils.NacosUtil;
 import com.lsstop.utils.RedisUtil;
 import org.springframework.boot.ApplicationArguments;
@@ -47,6 +48,8 @@ public class RpcAutoConfiguration implements ApplicationRunner {
     }
 
     public NettyClient nettyClient() {
+        //获取内网ip
+        this.configProperties.setHost(IpUtil.getServerIp());
         if (configProperties.getRegistryAddress() == null) {
             throw new RpcException("未设置注册中心地址: registryAddress");
         }
