@@ -104,14 +104,14 @@ public class TestController {
 ### 配置参考
 
 ```properties
-spring.rpc.registryAddress="nacos://127.0.0.1:8848"  #注册中心地址
-spring.rpc.name="DEMO"                               #注册名称
-spring.rpc.host="127.0.0.1"                          #启动ip
+spring.rpc.registryAddress=nacos://127.0.0.1:8848    #注册中心地址
+spring.rpc.name=DEMO                                 #注册名称
+spring.rpc.host=127.0.0.1                            #启动ip
 spring.rpc.port=8080                                 #启动端口
 spring.rpc.weight=1                                  #权重
-spring.rpc.serializer="kryo"                         #序列化方式
-spring.rpc.loadbalancer="roundRobin"                 #负载均衡算法
-spring.rpc.password="123456"                         #redis注册中心时redis密码
+spring.rpc.serializer=kryo                           #序列化方式
+spring.rpc.loadbalancer=roundRobin                   #负载均衡算法
+spring.rpc.password=123456                           #redis注册中心时redis密码
 spring.rpc.registry=false                            #是否注册服务(默认为true，注册服务)
 ```
 
